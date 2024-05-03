@@ -428,7 +428,7 @@ const MatchMaking = ({
           ]}>
           <Text
             style={{ ...Fonts.black16RobotoRegular, color: Colors.blackLight }}>
-            First Profile
+            Second Profile
           </Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('MatchingKundliList')}>
