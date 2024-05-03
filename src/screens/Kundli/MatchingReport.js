@@ -113,6 +113,7 @@ const MatchingReport = ({ navigation, route }) => {
             onPress={() => navigation.navigate('matchCategory', { data1: maleKundliData?.kundali_id, data2: femaleKundliData?.kundali_id })}
             style={{
               width: SCREEN_WIDTH * 0.35,
+              height: SCREEN_WIDTH * 0.52,
               justifyContent: 'center',
               alignItems: 'center',
               backgroundColor: Colors.grayLight,
@@ -150,11 +151,13 @@ const MatchingReport = ({ navigation, route }) => {
               <Text style={{ ...Fonts.white14RobotoRegular }}>View Kundli</Text>
             </LinearGradient>
           </TouchableOpacity>
+
           <TouchableOpacity
             onPress={() => navigation.navigate('matchCategory', { data1: maleKundliData?.kundali_id, data2: femaleKundliData?.kundali_id })}
 
             style={{
               width: SCREEN_WIDTH * 0.35,
+              height: SCREEN_WIDTH * 0.52,
               justifyContent: 'center',
               alignItems: 'center',
               backgroundColor: Colors.grayLight,

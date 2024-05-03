@@ -605,8 +605,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowColor: Colors.gray,
-    width: '90%',
-    alignSelf: 'flex-end',
     marginTop: Sizes.fixPadding * 0.5,
     overflow: 'hidden',
   },
