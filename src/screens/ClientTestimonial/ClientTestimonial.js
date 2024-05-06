@@ -3,7 +3,6 @@ import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SCREEN_WIDTH } from "../../config/Screen";
 import { Colors, Sizes, Fonts } from "../../assets/style";
-import { base_url } from "../../config/constants";
 
 function ClientTestimonial({navigation}) {
 

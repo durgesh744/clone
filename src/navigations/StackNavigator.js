@@ -31,8 +31,8 @@ import Favourable from '../screens/Kundli/Favourable';
 import KundliRemedies from '../screens/Kundli/KundliRemedies';
 import MatchingKundliList from '../screens/Kundli/MatchingKundliList';
 import TestimonialsDetails from '../screens/TestimonialDetails/TestimonialDetails';
-import AstrologyBlogDetails from '../features/LatestBlogs/AstrologyBlogDetails';
-import AstrologyBlogs from '../features/LatestBlogs/AstrologyBlogs';
+import AstrologyBlogDetails from '../screens/LatestBlogs/AstrologyBlogDetails';
+import AstrologyBlogs from '../screens/LatestBlogs/AstrologyBlogs';
 
 
 const Stack = createNativeStackNavigator();
