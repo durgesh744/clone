@@ -30,6 +30,9 @@ import KundliReport from '../screens/Kundli/KundliReport';
 import Favourable from '../screens/Kundli/Favourable';
 import KundliRemedies from '../screens/Kundli/KundliRemedies';
 import MatchingKundliList from '../screens/Kundli/MatchingKundliList';
+import TestimonialsDetails from '../screens/TestimonialDetails/TestimonialDetails';
+import AstrologyBlogDetails from '../features/LatestBlogs/AstrologyBlogDetails';
+import AstrologyBlogs from '../features/LatestBlogs/AstrologyBlogs';
 
 
 const Stack = createNativeStackNavigator();
@@ -72,6 +75,17 @@ const StackNavigator = () => {
       <Stack.Screen name="kundliRemedies" component={KundliRemedies} />
       <Stack.Screen name="birthDetails" component={BirthDetails} />
       <Stack.Screen name= "MatchingKundliList" component={MatchingKundliList} />
+     
+      <Stack.Screen
+        name="tesetimonialsDetails"
+        component={TestimonialsDetails}
+      />
+
+       <Stack.Screen
+        name="astrologyBlogDetails"
+        component={AstrologyBlogDetails}
+      />
+      <Stack.Screen name="astrologyBlogs" component={AstrologyBlogs} />
 
     </Stack.Navigator>
   );

@@ -12,6 +12,8 @@ import LinearGradient from 'react-native-linear-gradient'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { dataBanner, freeInsightData } from '../../config/data'
 import { img_url_2, img_url } from '../../config/constants'
+import ClientTestimonial from '../../features/ClientTestimonial/ClientTestimonial'
+import LatestBlogs from '../../features/LatestBlogs/LatestBlogs'
 
 const Home = ({ navigation }) => {
   const [state, setState] = useState({
@@ -70,6 +72,8 @@ const Home = ({ navigation }) => {
             ? liveAstroData.length != 0 && liveAstrologerInfo()
             : null}
           {freeInsightInfo({ navigation })}
+          <LatestBlogs navigation={navigation}  />
+          <ClientTestimonial navigation={navigation} />
         </>
       }
         contentContainerStyle={{ paddingBottom: Sizes.fixPadding * 10 }}
