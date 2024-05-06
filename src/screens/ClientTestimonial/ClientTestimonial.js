@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SCREEN_WIDTH } from "../../config/Screen";
 import { Colors, Sizes, Fonts } from "../../assets/style";
 
-function ClientTestimonial({navigation}) {
+function ClientTestimonial({ navigation }) {
 
     const testimonialsData = [
         [

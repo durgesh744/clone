@@ -33,7 +33,19 @@ import MatchingKundliList from '../screens/Kundli/MatchingKundliList';
 import TestimonialsDetails from '../screens/TestimonialDetails/TestimonialDetails';
 import AstrologyBlogDetails from '../screens/LatestBlogs/AstrologyBlogDetails';
 import AstrologyBlogs from '../screens/LatestBlogs/AstrologyBlogs';
-
+import ECommerce from '../screens/Ecommerce/ECommerce';
+import BookPooja from '../screens/Ecommerce/BookPooja';
+import Products from '../screens/Ecommerce/Products';
+import EcommerceSubCategory from '../screens/Ecommerce/EcommerceSubCategory';
+import PoojaAstrologer from '../screens/Ecommerce/PoojaAstrologer';
+import PoojaDetails from '../screens/Ecommerce/PoojaDetails';
+import PoojaPayement from '../screens/Ecommerce/PoojaPayement';
+import ProductDetailes from '../screens/Ecommerce/ProductDetailes';
+import PersonalDetailes from '../screens/Ecommerce/PersonalDetailes';
+import ProductTracking from '../screens/Ecommerce/ProductTracking';
+import ProductSuccessBooking from '../screens/Ecommerce/ProductSuccessBooking';
+import ProductHistoryDetails from '../screens/Ecommerce/ProductHistoryDetails';
+import PoojaHistoryDetailes from '../screens/Ecommerce/PoojaHistoryDetailes';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,19 +86,48 @@ const StackNavigator = () => {
       <Stack.Screen name="favourable" component={Favourable} />
       <Stack.Screen name="kundliRemedies" component={KundliRemedies} />
       <Stack.Screen name="birthDetails" component={BirthDetails} />
-      <Stack.Screen name= "MatchingKundliList" component={MatchingKundliList} />
-     
+      <Stack.Screen name="MatchingKundliList" component={MatchingKundliList} />
+
+      {/* testiminials navigation */}
+
       <Stack.Screen
         name="tesetimonialsDetails"
         component={TestimonialsDetails}
       />
+      {/* blogs navigation */}
 
-       <Stack.Screen
+      <Stack.Screen
         name="astrologyBlogDetails"
         component={AstrologyBlogDetails}
       />
       <Stack.Screen name="astrologyBlogs" component={AstrologyBlogs} />
+      {/* e commerce navigation */}
+      <Stack.Screen name="eCommerce" component={ECommerce} />
+      <Stack.Screen name="bookPooja" component={BookPooja} />
+      <Stack.Screen name="products" component={Products} />
+      <Stack.Screen
+        name="eCommerceSubCategory"
+        component={EcommerceSubCategory}
+      />
+      <Stack.Screen name="poojaAstrologer" component={PoojaAstrologer} />
+      <Stack.Screen name="poojaDetails" component={PoojaDetails} />
+      <Stack.Screen name="poojaPayement" component={PoojaPayement} />
+      <Stack.Screen name="productDetailes" component={ProductDetailes} />
+      <Stack.Screen name="personalDetailes" component={PersonalDetailes} />
+      <Stack.Screen name="productTracking" component={ProductTracking} />
+      <Stack.Screen
+        name="productSuccessBooking"
+        component={ProductSuccessBooking}
+      />
+      <Stack.Screen
+        name="productHistoryDetails"
+        component={ProductHistoryDetails}
+      />
 
+      <Stack.Screen
+        name="poojaHistoryDetailes"
+        component={PoojaHistoryDetailes}
+      />
     </Stack.Navigator>
   );
 };

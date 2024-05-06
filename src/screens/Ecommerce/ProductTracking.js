@@ -9,13 +9,11 @@ import {
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {BottomSheet, Input} from '@rneui/themed';
+import {BottomSheet} from '@rneui/themed';
 import StepIndicator from 'react-native-step-indicator';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../config/Screen';
-import Loader from '../../components/Loader';
+import Loader from '../../component/Loader';
 import Stars from 'react-native-stars';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TextInput} from 'react-native';
@@ -63,7 +61,7 @@ const labels = [
 ];
 
 const ProductTracking = ({navigation, route, userData}) => {
-  console.log(route?.params?.productData?.id);
+
   const [state, setState] = useState({
     reviewModalVisible: false,
     productData: route?.params?.productData,

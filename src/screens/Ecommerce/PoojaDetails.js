@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {
   View,
   Text,
@@ -8,15 +9,13 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import Carousel from 'react-native-reanimated-carousel';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import {useSharedValue} from 'react-native-reanimated';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
-import MyHeader from '../../components/MyHeader';
-import moment from 'moment';
+import MyHeader from '../../component/MyHeader';
 import {img_url_2, img_url_3} from '../../config/constants';
 
 const PoojaDetails = ({navigation, route}) => {

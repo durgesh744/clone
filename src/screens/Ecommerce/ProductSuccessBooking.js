@@ -10,8 +10,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
-import MyStatusBar from '../../components/MyStatusBar';
-import MyHeader from '../../components/MyHeader';
+import MyStatusBar from '../../component/MyStatusBar';
 import moment from 'moment';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../config/Screen';
 import {CommonActions} from '@react-navigation/native';
@@ -19,7 +18,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const ProductSuccessBooking = ({navigation, route}) => {
   const [orderData] = useState(route?.params?.data)
-  console.log(orderData)
+  
   useEffect(() => {
     const backAction = () => {
       go_home();

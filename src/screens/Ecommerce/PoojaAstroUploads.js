@@ -8,14 +8,12 @@ import {
   ImageBackground,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import moment from 'moment';
 import {createThumbnail} from 'react-native-create-thumbnail';
 import {ActivityIndicator} from 'react-native-paper';
-import MyHeader from '../../components/MyHeader';
-import MyStatusBar from '../../components/MyStatusBar';
-import ImageView from '../../components/ImageView';
-import VedioPlayer from '../../components/VedioPlayer';
+import MyHeader from '../../component/MyHeader';
+import MyStatusBar from '../../component/MyStatusBar';
+import ImageView from '../../component/ImageView';
+import VedioPlayer from '../../component/VedioPlayer';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import {img_url_2} from '../../config/constants';

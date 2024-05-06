@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {FlatList} from 'react-native';
 import {SCREEN_WIDTH} from '../../config/Screen';
@@ -20,9 +20,9 @@ import {
   category_pooja_list,
   img_url_3,
 } from '../../config/constants';
-import Loader from '../../components/Loader';
+import Loader from '../../component/Loader';
 import axios from 'axios';
-import NoDataFound from '../../components/NoDataFound';
+import NoDataFound from '../../component/NoDataFound';
 
 const BookPooja = ({navigation, route}) => {
   const [state, setState] = useState({
@@ -214,15 +214,6 @@ const BookPooja = ({navigation, route}) => {
                   style={{...Fonts.white11InterMedium, fontSize: 9, flex: 0.6}}>
                   {item?.title}
                 </Text>
-                {/* <Text
-                  style={{
-                    ...Fonts.white11InterMedium,
-                    fontSize: 9,
-                    flex: 0.4,
-                    textAlign: 'right',
-                  }}>
-               {item.sub_title}
-                </Text> */}
               </View>
             </LinearGradient>
           </ImageBackground>
@@ -309,12 +300,6 @@ const BookPooja = ({navigation, route}) => {
             />
           }
         />
-        {/* <TouchableOpacity style={{flex: 0.2, marginLeft: Sizes.fixPadding}}>
-          <Image
-            source={require('../assets/images/icons/filter.png')}
-            style={{width: 20, height: 20}}
-          />
-        </TouchableOpacity> */}
       </View>
     );
   }

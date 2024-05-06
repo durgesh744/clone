@@ -1,27 +1,26 @@
+import axios from 'axios';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
   TouchableOpacity,
-  Image,
   PermissionsAndroid,
   ToastAndroid,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Input} from '@rneui/themed';
 import {showToastWithGravityAndOffset} from '../../methods/toastMessage';
 import {connect} from 'react-redux';
-import Payment from '../../components/Payment';
-import axios from 'axios';
+import Payment from '../../component/Payment';
 import {google_map_key} from '../../config/constants';
 import Geolocation from 'react-native-geolocation-service';
-import Loader from '../../components/Loader';
+import Loader from '../../component/Loader';
 
 const PersonalDetailes = ({navigation, route, userData}) => {
   console.log(route?.params?.cartData)

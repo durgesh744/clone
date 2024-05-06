@@ -7,28 +7,19 @@ import {
   Image,
 } from 'react-native';
 import React, {useState} from 'react';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {SCREEN_WIDTH} from '../../config/Screen';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Stars from 'react-native-stars';
 import LinearGradient from 'react-native-linear-gradient';
 import {base_url} from '../../config/constants';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MyMethods } from '../../methods/my_methods';
+
 const ProductHistoryDetails = ({navigation, route}) => {
   const [state, setState] = useState({
     productData: route?.params?.productData,
     isLoading: false,
   });
-
-  const updateState = data => {
-    setState(prevState => {
-      const newData = {...prevState, ...data};
-      return newData;
-    });
-  };
 
   const {productData, isLoading} = state;
 
@@ -178,7 +169,6 @@ const ProductHistoryDetails = ({navigation, route}) => {
           onPress={() => navigation.goBack()}
           style={{
             alignSelf: 'flex-start',
-            // flex: 0.2,
           }}>
           <AntDesign
             name="leftcircleo"
@@ -190,7 +180,6 @@ const ProductHistoryDetails = ({navigation, route}) => {
           style={{
             ...Fonts.primaryLight15RobotoMedium,
             textAlign: 'center',
-            // flex: 0.6,
           }}>
           Product details
         </Text>

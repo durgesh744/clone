@@ -7,7 +7,7 @@ import {
   Image,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {SCREEN_WIDTH} from '../../config/Screen';
@@ -19,29 +19,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MyMethods} from '../../methods/my_methods';
 import { showToastWithGravityAndOffset } from '../../methods/toastMessage';
 import axios from 'axios';
-
-const astrologerData = [
-  {
-    id: 1,
-    name: 'Soniya Ji',
-    image: require('../../assets/images/users/user1.jpg'),
-  },
-  {
-    id: 2,
-    name: 'Guru Ji',
-    image: require('../../assets/images/users/user2.jpg'),
-  },
-  {
-    id: 3,
-    name: 'Revati Ji',
-    image: require('../../assets/images/users/user3.jpg'),
-  },
-  {
-    id: 4,
-    name: 'Guru Ji',
-    image: require('../../assets/images/users/user4.jpg'),
-  },
-];
 
 const ProductDetailes = ({navigation, route}) => {
   const [ review, setreview] = useState(null);
@@ -247,7 +224,6 @@ const ProductDetailes = ({navigation, route}) => {
                     color={Colors.primaryLight}
                   />
                 }
-                // halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]} />}
               />
             </View>
           </View>

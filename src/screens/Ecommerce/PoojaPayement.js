@@ -9,17 +9,16 @@ import {
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import Carousel from 'react-native-reanimated-carousel';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import {useSharedValue} from 'react-native-reanimated';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Payment from '../../components/Payment';
+import Payment from '../../component/Payment';
 import {connect} from 'react-redux';
 import {api_url, img_url_2, img_url_3} from '../../config/constants';
-import {Modal} from 'react-native-paper';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

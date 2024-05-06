@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';

@@ -1,11 +1,11 @@
+import { Image } from 'react-native'
 import React, { useState } from 'react'
+import { Divider } from 'react-native-paper'
 import { FlatList, ImageBackground, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import { Colors, Sizes, Fonts } from '../../assets/style'
 import MyStatusBar from '../../component/MyStatusBar'
 import HomeSkeleton from '../../component/skeleton/HomeSkeleton'
 import { TouchableOpacity } from 'react-native'
-import { Image } from 'react-native'
-import { Divider } from 'react-native-paper'
 import { SCREEN_WIDTH } from '../../config/Screen'
 import Carousel from 'react-native-reanimated-carousel';
 import LinearGradient from 'react-native-linear-gradient'
@@ -14,6 +14,7 @@ import { dataBanner, freeInsightData } from '../../config/data'
 import { img_url_2, img_url } from '../../config/constants'
 import ClientTestimonial from '../ClientTestimonial/ClientTestimonial'
 import LatestBlogs from '../LatestBlogs/LatestBlogs'
+import EcommerceInfo from '../Ecommerce/EcommerceInfo'
 
 const Home = ({ navigation }) => {
   const [state, setState] = useState({
@@ -23,7 +24,6 @@ const Home = ({ navigation }) => {
     testimonialsData: null,
     astroData: null,
     blogData: null,
-    ecommerceData: null,
     recentAstroData: null,
     activeChatVisible: false,
     liveAstroData: null,
@@ -43,7 +43,6 @@ const Home = ({ navigation }) => {
     isLoading,
     testimonialsData,
     blogData,
-    ecommerceData,
     recentAstroData,
     liveAstroData,
     isRefreshing,
@@ -55,6 +54,7 @@ const Home = ({ navigation }) => {
     courseData,
     learningBannerData
   } = state;
+  
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
@@ -72,6 +72,7 @@ const Home = ({ navigation }) => {
             ? liveAstroData.length != 0 && liveAstrologerInfo()
             : null}
           {freeInsightInfo({ navigation })}
+          <EcommerceInfo navigation={navigation} />
           <LatestBlogs navigation={navigation}  />
           <ClientTestimonial navigation={navigation} />
         </>
@@ -160,7 +161,6 @@ function freeInsightInfo({ navigation }) {
     </View>
   );
 }
-
 
 function liveAstrologerInfo() {
   const on_live = item => {
@@ -329,9 +329,6 @@ function bannerInfo() {
         }}
         autoPlay={true}
         autoPlayInterval={4000}
-        // onProgressChange={(_, absoluteProgress) =>
-        //   (progressValue.value = absoluteProgress)
-        // }
         mode="parallax"
         modeConfig={{
           parallaxScrollingScale: 1,

@@ -28,7 +28,6 @@ import { connect } from 'react-redux';
 import { showToastWithGravityAndOffset } from '../../methods/toastMessage';
 import Loader from '../../component/Loader';
 import * as UserActions from '../../redux/actions/UserActions';
-import { useRoute } from '@react-navigation/native';
 import { genderData } from '../../config/data';
 import { useAuth } from '../../context/AuthContext';
 

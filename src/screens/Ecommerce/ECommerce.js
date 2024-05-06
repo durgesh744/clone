@@ -1,133 +1,84 @@
-import {View, Text, TouchableOpacity, StyleSheet, Image, Dimensions} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {Colors, Fonts, Sizes} from '../../assets/style';
-import MyStatusBar from '../../components/MyStatusBar';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Colors, Fonts, Sizes } from '../../assets/style';
+import MyStatusBar from '../../component/MyStatusBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {FlatList} from 'react-native';
-import {SCREEN_WIDTH} from '../../config/Screen';
+import { FlatList } from 'react-native';
+import { SCREEN_WIDTH } from '../../config/Screen';
 import axios from 'axios';
-import {api_url, base_url, get_fav, get_fortune_store_banner, get_mall_cat, img_url} from '../../config/constants';
-import Loader from '../../components/Loader';
+import { api_url, base_url, get_fav, get_fortune_store_banner, get_mall_cat, img_url } from '../../config/constants';
+import Loader from '../../component/Loader';
 import LinearGradient from 'react-native-linear-gradient';
-import NoDataFound from '../../components/NoDataFound';
+import NoDataFound from '../../component/NoDataFound';
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
-import { ScreenWidth } from '@rneui/base';
-const width= Dimensions.get('screen').width
-const data = [
-  {
-    id: 1,
-    name: 'Pooja Kit',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 2,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 3,
-    name: 'Gemstone',
-    image: require('../../assets/images/ecommerce_3.png'),
-  },
-  {
-    id: 4,
-    name: 'Pooja Kit',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 5,
-    name: 'Gemstone',
-    image: require('../../assets/images/ecommerce_3.png'),
-  },
-  {
-    id: 6,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_2.png'),
-  },
-  {
-    id: 6,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_2.png'),
-  },
-];
 
-const ECommerce = ({navigation}) => {
+const width = Dimensions.get('screen').width
+
+const ECommerce = ({ navigation }) => {
   const [data, setdata] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // console.log(data.bannerData,"hello data");
+
   const [state, setState] = useState({
     categoryData: null,
     isLoading: false,
     selectedItem: null,
   });
 
-  
-
   useEffect(() => {
     get_banner();
     get_category();
-    
+
   }, []);
 
   const get_category = async () => {
-    updateState({isLoading: false});
+    updateState({ isLoading: false });
     axios({
       method: 'get',
       url: api_url + get_mall_cat,
     })
       .then(res => {
-        updateState({isLoading: false});
+        updateState({ isLoading: false });
         if (res.data.status) {
-          updateState({categoryData: res.data.data});
+          updateState({ categoryData: res.data.data });
         }
       })
       .catch(err => {
         console.log(err);
-        updateState({isLoading: false});
+        updateState({ isLoading: false });
       });
   };
 
   const updateState = data => {
     setState(prevState => {
-      const newState = {...prevState, ...data};
+      const newState = { ...prevState, ...data };
       return newState;
     });
   };
 
   const get_banner = async () => {
-    // setdata({isLoading: true});
     await axios({
       method: 'get',
       url: api_url + get_fortune_store_banner,
     })
-     .then(res => {
-        setdata({isLoading: false});
-        console.log('sdfasdf0',res.data.data);
+      .then(res => {
+        setdata({ isLoading: false });
         setdata(res.data.data);
       })
-     .catch(err => {
-        setdata({isLoading: false});
+      .catch(err => {
+        setdata({ isLoading: false });
         console.log(err);
       });
   };
-  
 
-  
-  
-
-  console.log('thisis banner sdfgsdfg data',data?.bannerData);
-
-
-  const {categoryData, isLoading, selectedItem} = state;
+  const { categoryData, isLoading, selectedItem } = state;
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.bodyColor}}>
+    <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
       <MyStatusBar
         backgroundColor={Colors.primaryLight}
         barStyle={'light-content'}
       />
       <Loader visible={isLoading} />
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         {header()}
         <FlatList
           ListHeaderComponent={
@@ -136,69 +87,35 @@ const ECommerce = ({navigation}) => {
               {categoryData && eCommerceDataInfo()}
             </>
           }
-          contentContainerStyle={{paddingVertical: Sizes.fixPadding}}
+          contentContainerStyle={{ paddingVertical: Sizes.fixPadding }}
         />
       </View>
-      {/* {categoryData && continueButtonInfo()} */}
     </View>
   );
 
-  function continueButtonInfo() {
-    const on_continue = () => {
-      if (selectedItem?.sub_cat == '1') {
-        navigation.navigate('eCommerceSubCategory', {
-          categoryData: selectedItem,
-        });
-      } else {
-        navigation.navigate('productDetailes', {categoryData: selectedItem});
-      }
-    };
-    return (
-      <TouchableOpacity
-        activeOpacity={0.8}
-        disabled={selectedItem == null}
-        onPress={() => on_continue()}
-        style={{
-          marginHorizontal: Sizes.fixPadding * 4,
-          marginVertical: Sizes.fixPadding,
-          borderRadius: Sizes.fixPadding * 1.5,
-          overflow: 'hidden',
-        }}>
-        <LinearGradient
-          colors={[Colors.primaryLight, Colors.primaryDark]}
-          style={{paddingVertical: Sizes.fixPadding}}>
-          <Text style={{...Fonts.white16RobotoMedium, textAlign: 'center'}}>
-            Continue
-          </Text>
-        </LinearGradient>
-      </TouchableOpacity>
-    );
-  }
-
   function eCommerceDataInfo() {
-
-    const navigate_to =(type, item)=>{
-      switch(type){
+    const navigate_to = (type, item) => {
+      switch (type) {
         case 'book a pooja': {
-          navigation.navigate('bookPooja', {categoryData: item, type: 'book_a_pooja'})
+          navigation.navigate('bookPooja', { categoryData: item, type: 'book_a_pooja' })
           break;
         }
-        case 'spell':{
-          navigation.navigate('bookPooja', {categoryData: item, type: 'spell'})
+        case 'spell': {
+          navigation.navigate('bookPooja', { categoryData: item, type: 'spell' })
           break;
         }
         default: {
-          navigation.navigate('products', {categoryData: item, type: 'products'})
+          navigation.navigate('products', { categoryData: item, type: 'products' })
         }
       }
     }
 
-    const renderItem = ({item, index}) => {
+    const renderItem = ({ item, index }) => {
       return (
         <TouchableOpacity
           activeOpacity={1}
           onPress={() =>
-            navigate_to(item?.name.toLowerCase(),item)
+            navigate_to(item?.name.toLowerCase(), item)
           }
           style={{
             width: SCREEN_WIDTH * 0.45,
@@ -225,7 +142,7 @@ const ECommerce = ({navigation}) => {
               overflow: 'hidden',
             }}>
             <Image
-              source={{uri: base_url + 'admin/' + item.image}}
+              source={{ uri: base_url + 'admin/' + item.image }}
               style={{
                 width: '100%',
                 height: '100%',
@@ -251,7 +168,7 @@ const ECommerce = ({navigation}) => {
               shadowColor: Colors.blackLight,
             }}>
             <Text
-              style={[{...Fonts.black14InterMedium}, {textAlign: 'center'}]}>
+              style={[{ ...Fonts.black14InterMedium }, { textAlign: 'center' }]}>
               {item.name}
             </Text>
           </LinearGradient>
@@ -266,7 +183,7 @@ const ECommerce = ({navigation}) => {
           keyExtractor={item => item.id}
           numColumns={2}
           contentContainerStyle={{}}
-          columnWrapperStyle={{justifyContent: 'space-evenly'}}
+          columnWrapperStyle={{ justifyContent: 'space-evenly' }}
           ListEmptyComponent={<NoDataFound />}
         />
       </View>
@@ -276,19 +193,19 @@ const ECommerce = ({navigation}) => {
   function bannerInfo() {
     return (
       <SwiperFlatList
-      autoplay
-      autoplayLoop
-      
-      data={data}
-      renderItem={({ item }) => (
-                  <Image
-              source={{ uri: img_url +  item.image }} // Assuming each banner object has an 'imageUrl' property
-              style={{ width:width, height:100, resizeMode:'contain',  }}
-            />
-      )}
-    />
+        autoplay
+        autoplayLoop
+
+        data={data}
+        renderItem={({ item }) => (
+          <Image
+            source={{ uri: img_url + item.image }} // Assuming each banner object has an 'imageUrl' property
+            style={{ width: width, height: 100, resizeMode: 'contain', }}
+          />
+        )}
+      />
     );
-  
+
   }
 
   function header() {
@@ -324,7 +241,7 @@ const ECommerce = ({navigation}) => {
         <TouchableOpacity>
           <Image
             source={require('../../assets/images/icons/cart.png')}
-            style={{width: 22, height: 22}}
+            style={{ width: 22, height: 22 }}
           />
         </TouchableOpacity>
       </View>

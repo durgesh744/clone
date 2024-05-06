@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
-import MyStatusBar from '../../components/MyStatusBar';
+import MyStatusBar from '../../component/MyStatusBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {FlatList} from 'react-native';
 import {SCREEN_WIDTH} from '../../config/Screen';
@@ -17,51 +17,11 @@ import {Input} from '@rneui/themed';
 import {
   api_url,
   base_url,
-  category_pooja_list,
-  img_url_3,
   post_mall_sub_category,
 } from '../../config/constants';
-import Loader from '../../components/Loader';
+import Loader from '../../component/Loader';
 import axios from 'axios';
-import NoDataFound from '../../components/NoDataFound';
-
-const data = [
-  {
-    id: 1,
-    name: 'Pooja Kit',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 2,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 3,
-    name: 'Gemstone',
-    image: require('../../assets/images/ecommerce_3.png'),
-  },
-  {
-    id: 4,
-    name: 'Pooja Kit',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 5,
-    name: 'Gemstone',
-    image: require('../../assets/images/ecommerce_3.png'),
-  },
-  {
-    id: 6,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_2.png'),
-  },
-  {
-    id: 7,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_2.png'),
-  },
-];
+import NoDataFound from '../../component/NoDataFound';
 
 const Products = ({navigation, route}) => {
   const [state, setState] = useState({
@@ -291,12 +251,6 @@ const Products = ({navigation, route}) => {
             />
           }
         />
-        {/* <TouchableOpacity style={{flex: 0.2, marginLeft: Sizes.fixPadding}}>
-              <Image
-                source={require('../assets/images/icons/filter.png')}
-                style={{width: 20, height: 20}}
-              />
-            </TouchableOpacity> */}
       </View>
     );
   }
@@ -315,7 +269,6 @@ const Products = ({navigation, route}) => {
           onPress={() => navigation.goBack()}
           style={{
             alignSelf: 'flex-start',
-            // flex: 0.2,
           }}>
           <AntDesign
             name="leftcircleo"
@@ -327,7 +280,6 @@ const Products = ({navigation, route}) => {
           style={{
             ...Fonts.primaryLight15RobotoMedium,
             textAlign: 'center',
-            // flex: 0.6,
           }}>
           {screeType}
         </Text>

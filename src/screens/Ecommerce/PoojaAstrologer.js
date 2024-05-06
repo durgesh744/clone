@@ -2,71 +2,28 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   Image,
   ImageBackground,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
-import MyStatusBar from '../../components/MyStatusBar';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import MyStatusBar from '../../component/MyStatusBar';
 import {FlatList} from 'react-native';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import LinearGradient from 'react-native-linear-gradient';
-import {Input} from '@rneui/themed';
 import {
   api_url,
-  category_pooja_list,
   img_url_2,
   img_url_3,
   schedule_a_pooja_id,
 } from '../../config/constants';
-import Loader from '../../components/Loader';
+import Loader from '../../component/Loader';
 import axios from 'axios';
-import MyHeader from '../../components/MyHeader';
+import MyHeader from '../../component/MyHeader';
 import moment from 'moment';
-import NoDataFound from '../../components/NoDataFound';
-
-const data = [
-  {
-    id: 1,
-    name: 'Pooja Kit',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 2,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 3,
-    name: 'Gemstone',
-    image: require('../../assets/images/ecommerce_3.png'),
-  },
-  {
-    id: 4,
-    name: 'Pooja Kit',
-    image: require('../../assets/images/ecommerce_1.png'),
-  },
-  {
-    id: 5,
-    name: 'Gemstone',
-    image: require('../../assets/images/ecommerce_3.png'),
-  },
-  {
-    id: 6,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_2.png'),
-  },
-  {
-    id: 7,
-    name: 'Book a Pooja',
-    image: require('../../assets/images/ecommerce_2.png'),
-  },
-];
+import NoDataFound from '../../component/NoDataFound';
 
 const PoojaAstrologer = ({navigation, route}) => {
-  console.log(route.params?.pooja_id)
   const [state, setState] = useState({
     isLoading: false,
     astrologerData: null,
