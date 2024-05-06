@@ -146,17 +146,17 @@ const MainPanchang = ({ navigation, customerData, dispatch, selectedLocation }) 
 
   function nextInfo() {
     const on_next = async () => {
-      const check_is_register = await AsyncStorage.getItem('isRegister');
-      const isRegister = JSON.parse(check_is_register);
-      if (isRegister?.value) {
+      // const check_is_register = await AsyncStorage.getItem('isRegister');
+      // const isRegister = JSON.parse(check_is_register);
+      // if (isRegister?.value) {
         create_kundli()
-      } else {
-        if (isRegister?.type == 'profile') {
-          navigation.navigate('profile')
-        } else {
-          navigation.navigate('login')
-        }
-      }
+      // } else {
+      //   if (isRegister?.type == 'profile') {
+      //     navigation.navigate('profile')
+      //   } else {
+      //     navigation.navigate('login')
+      //   }
+      // }
     }
     return (
       <TouchableOpacity

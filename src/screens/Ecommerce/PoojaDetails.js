@@ -57,7 +57,6 @@ const PoojaDetails = ({navigation, route}) => {
               {continueButtonInfo()}
             </>
           }
-          // contentContainerStyle={{paddingVertical: Sizes.fixPadding}}
         />
       </View>
     </View>
@@ -123,17 +122,6 @@ const PoojaDetails = ({navigation, route}) => {
         </Text>
         <Text style={{...Fonts.black16RobotoMedium}}>
           ₹ {poojaData?.price}{' '}
-          {/* <Text
-            style={{
-              ...Fonts.gray16RobotoMedium,
-              textDecorationLine: 'line-through',
-            }}>
-            {' '}
-            7500{' '}
-          </Text>{' '} */}
-          {/* <Text style={{...Fonts.white14RobotoMedium, color: Colors.red}}>
-            20% Off
-          </Text> */}
         </Text>
       </View>
     );

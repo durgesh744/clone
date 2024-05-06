@@ -60,7 +60,7 @@ const ProductDetailes = ({navigation, route}) => {
   const Review = async () => {
     await axios({
       method: 'get',
-      url: api_url + get_pro_review, // Add quotation marks around the variable
+      url: api_url + get_pro_review,
     })
       .then(res => {
         setreview(res.data.data);
@@ -69,7 +69,7 @@ const ProductDetailes = ({navigation, route}) => {
         console.log(err);
       });
   };
- console.log(review   )  
+
   const updateState = data => {
     setState(prevState => {
       const newData = {...prevState, ...data};
@@ -355,7 +355,6 @@ const ProductDetailes = ({navigation, route}) => {
           onPress={() => navigation.goBack()}
           style={{
             alignSelf: 'flex-start',
-            // flex: 0.2,
           }}>
           <AntDesign
             name="leftcircleo"
@@ -367,7 +366,6 @@ const ProductDetailes = ({navigation, route}) => {
           style={{
             ...Fonts.primaryLight15RobotoMedium,
             textAlign: 'center',
-            // flex: 0.6,
           }}>
           Product details
         </Text>

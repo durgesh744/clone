@@ -18,7 +18,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Payment from '../../component/Payment';
 import {connect} from 'react-redux';
-import {api_url, img_url_2, img_url_3} from '../../config/constants';
+import {img_url_2, img_url_3} from '../../config/constants';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -101,7 +101,6 @@ const PoojaPayement = ({navigation, route, userData}) => {
           contentContainerStyle={{paddingVertical: Sizes.fixPadding}}
         />
         {!successVisible && continueButtonInfo()}
-        {/* {successModalInfo()} */}
       </View>
       <Payment
         showPayment={showPayment}

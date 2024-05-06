@@ -5,35 +5,35 @@ import {
   FlatList,
 } from 'react-native';
 import React from 'react';
-import {Colors, Sizes, Fonts} from '../../assets/style';
+import { Colors, Sizes, Fonts } from '../../assets/style';
 import MyStatusBar from '../../component/MyStatusBar';
-import {api_url, advanced_panchang} from '../../config/constants';
+import { api_url, advanced_panchang } from '../../config/constants';
 import DateFilter from './DateFilter';
 import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const RahuKaal = ({panchangData,panchangDataNew}) => {
+const RahuKaal = ({ panchangData, panchangDataNew }) => {
 
   const [data, setData] = useState('');
-  const [refresh,setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     get_Rahukal();
   }, []);
 
-  if(refresh){
+  if (refresh) {
     const get_Rahukal1 = async () => {
       await axios({
         method: 'post',
-        url: api_url + advanced_panchang ,
+        url: api_url + advanced_panchang,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
         data: {
-          date : panchangDataNew.newDate != null ? panchangDataNew.newDate : new Date(),
-            latitude: panchangDataNew.latitude,
-            longitude:panchangDataNew.longitude, 
+          date: panchangDataNew.newDate != null ? panchangDataNew.newDate : new Date(),
+          latitude: panchangDataNew.latitude,
+          longitude: panchangDataNew.longitude,
         },
       })
         .then(res => {
@@ -45,16 +45,16 @@ const RahuKaal = ({panchangData,panchangDataNew}) => {
     };
     get_Rahukal1
   }
- 
+
   const get_Rahukal = async () => {
     await axios({
       method: 'post',
-      url: api_url + advanced_panchang ,
+      url: api_url + advanced_panchang,
       headers: {
         'Content-Type': 'multipart/form-data',
       },
       data: {
-        date :  new Date(),
+        date: new Date(),
         latitude: 28.4563,
         longitude: 78.5241,
       },
@@ -68,7 +68,7 @@ const RahuKaal = ({panchangData,panchangDataNew}) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.bodyColor}}>
+    <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
       <MyStatusBar
         backgroundColor={Colors.primaryLight}
         barStyle={'light-content'}
@@ -101,7 +101,7 @@ const RahuKaal = ({panchangData,panchangDataNew}) => {
           borderWidth: 1,
           borderColor: Colors.grayMedium,
         }}>
-        <Text style={{...Fonts.gray16RobotoMedium, paddingHorizontal:Sizes.fixPadding, paddingVertical: Sizes.fixPadding*0.5}}>Rahu Kaal</Text>
+        <Text style={{ ...Fonts.gray16RobotoMedium, paddingHorizontal: Sizes.fixPadding, paddingVertical: Sizes.fixPadding * 0.5 }}>Rahu Kaal</Text>
         <View style={styles.tablefield}>
           <Text style={styles.text1}>Start Time</Text>
           <Text style={styles.text2}>{data.advanced_panchang?.rahukaal.start}</Text>
@@ -115,12 +115,12 @@ const RahuKaal = ({panchangData,panchangDataNew}) => {
   }
   function searchBar() {
     return (
-      <DateFilter refresh={refresh} setRefresh={setRefresh}/>
+      <DateFilter refresh={refresh} setRefresh={setRefresh} />
     );
   }
 }
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
   panchangData: state.kundli.panchangData,
   panchangDataNew: state.kundli.panchangDataNew,
   currentLocation: state.kundli.currentLatLong,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   text1: {
     ...Fonts.gray16RobotoRegular,
     width: '50%',
-  }, 
+  },
   text2: {
     ...Fonts.gray16RobotoRegular, width: '50%',
     textAlign: 'right'

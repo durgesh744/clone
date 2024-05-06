@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { connect } from 'react-redux';
 import DateFilter from './DateFilter';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
-import React, { useEffect,useState } from 'react';
-import {Colors, Sizes, Fonts} from '../../assets/style';
+import { Text, View, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Colors, Sizes, Fonts } from '../../assets/style';
 import MyStatusBar from '../../component/MyStatusBar';
-import {api_url, advanced_panchang} from '../../config/constants';
+import { api_url, advanced_panchang } from '../../config/constants';
 
-const Tithi = ({panchangData,panchangDataNew }) => {
+const Tithi = ({ panchangData, panchangDataNew }) => {
   const [data, setData] = useState('');
-  const [refresh,setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     get_Tithi();
@@ -19,14 +19,14 @@ const Tithi = ({panchangData,panchangDataNew }) => {
     const get_Tithi = async () => {
       await axios({
         method: 'post',
-        url: api_url + advanced_panchang ,
+        url: api_url + advanced_panchang,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
         data: {
-          date : panchangDataNew.newDate != null ? panchangDataNew.newDate : new Date(),
+          date: panchangDataNew.newDate != null ? panchangDataNew.newDate : new Date(),
           latitude: panchangDataNew.latitude,
-          longitude:panchangDataNew.longitude, 
+          longitude: panchangDataNew.longitude,
         },
       })
         .then(res => {
@@ -42,14 +42,14 @@ const Tithi = ({panchangData,panchangDataNew }) => {
   const get_Tithi = async () => {
     await axios({
       method: 'post',
-      url: api_url + advanced_panchang ,
+      url: api_url + advanced_panchang,
       headers: {
         'Content-Type': 'multipart/form-data',
       },
       data: {
-        date :  new Date(),
+        date: new Date(),
         latitude: 28.4563,
-        longitude: 78.5241, 
+        longitude: 78.5241,
       },
     })
       .then(res => {
@@ -61,7 +61,7 @@ const Tithi = ({panchangData,panchangDataNew }) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.bodyColor}}>
+    <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
       <MyStatusBar
         backgroundColor={Colors.primaryLight}
         barStyle={'light-content'}
@@ -89,8 +89,8 @@ const Tithi = ({panchangData,panchangDataNew }) => {
 
   function tithiInfo() {
     return (
-      <View style={{marginVertical:Sizes.fixPadding}}>
-        <Text style={{...Fonts.gray16RobotoRegular}}>Shukla Dwadashi upto 09:45, 26 Oct, Ashwin, Vikram Samvat -2080.</Text>
+      <View style={{ marginVertical: Sizes.fixPadding }}>
+        <Text style={{ ...Fonts.gray16RobotoRegular }}>Shukla Dwadashi upto 09:45, 26 Oct, Ashwin, Vikram Samvat -2080.</Text>
       </View>
     )
   }
@@ -105,25 +105,25 @@ const Tithi = ({panchangData,panchangDataNew }) => {
           borderWidth: 1,
           borderColor: Colors.grayMedium
         }}>
-        <View style={{borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray}}>
-          <Text style={{...Fonts.gray16RobotoRegular}}>Tithi Number</Text>
-          <Text style={{...Fonts.gray16RobotoRegular}}>{data.advanced_panchang?.tithi.details.tithi_number}</Text>
+        <View style={{ borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray }}>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>Tithi Number</Text>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>{data.advanced_panchang?.tithi.details.tithi_number}</Text>
         </View>
-        <View style={{borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray}}>
-          <Text style={{...Fonts.gray16RobotoRegular}}>Today's Tithi</Text>
-          <Text style={{...Fonts.gray16RobotoRegular}}>{data.advanced_panchang?.tithi.details.tithi_name}</Text>
+        <View style={{ borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray }}>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>Today's Tithi</Text>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>{data.advanced_panchang?.tithi.details.tithi_name}</Text>
         </View>
-        <View style={{borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray}}>
-          <Text style={{...Fonts.gray16RobotoRegular}}>Special</Text>
-          <Text style={{...Fonts.gray16RobotoRegular}}>{data.advanced_panchang?.tithi.details.special}</Text>
+        <View style={{ borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray }}>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>Special</Text>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>{data.advanced_panchang?.tithi.details.special}</Text>
         </View>
-        <View style={{borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray}}>
-          <Text style={{...Fonts.gray16RobotoRegular}}>Deity</Text>
-          <Text style={{...Fonts.gray16RobotoRegular}}>{data.advanced_panchang?.tithi.details.deity}</Text>
+        <View style={{ borderBottomWidth: 1, padding: Sizes.fixPadding, borderBottomColor: Colors.grayMedium, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray }}>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>Deity</Text>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>{data.advanced_panchang?.tithi.details.deity}</Text>
         </View>
-        <View style={{padding: Sizes.fixPadding, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray}}>
-          <Text style={{...Fonts.gray16RobotoRegular}}>End Time</Text>
-          <Text style={{...Fonts.gray16RobotoRegular}}>{`${data.advanced_panchang?.tithi.end_time.hour}:${data.advanced_panchang?.tithi.end_time.minute}:${data.advanced_panchang?.tithi.end_time.second}`}</Text>
+        <View style={{ padding: Sizes.fixPadding, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: Colors.gray }}>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>End Time</Text>
+          <Text style={{ ...Fonts.gray16RobotoRegular }}>{`${data.advanced_panchang?.tithi.end_time.hour}:${data.advanced_panchang?.tithi.end_time.minute}:${data.advanced_panchang?.tithi.end_time.second}`}</Text>
         </View>
       </View>
     )
@@ -131,26 +131,24 @@ const Tithi = ({panchangData,panchangDataNew }) => {
 
   function tithiData() {
     return (
-      <View style={{marginVertical:Sizes.fixPadding}}>
-        <Text style={{...Fonts.black14RobotoRegular, fontWeight: 'bold', color: Colors.blackLight}}>Purnimantra</Text>
-        <Text style={{...Fonts.gray16RobotoRegular}}>Shukla Dwadashi upto 09:45, 26 Oct, Ashwin, Vikram Samvat -2080.</Text>
+      <View style={{ marginVertical: Sizes.fixPadding }}>
+        <Text style={{ ...Fonts.black14RobotoRegular, fontWeight: 'bold', color: Colors.blackLight }}>Purnimantra</Text>
+        <Text style={{ ...Fonts.gray16RobotoRegular }}>Shukla Dwadashi upto 09:45, 26 Oct, Ashwin, Vikram Samvat -2080.</Text>
       </View>
     );
   }
 
   function searchBar() {
     return (
-      <DateFilter refresh={refresh} setRefresh={setRefresh}/>
+      <DateFilter refresh={refresh} setRefresh={setRefresh} />
     );
   }
 }
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
   panchangData: state.kundli.panchangData,
   panchangDataNew: state.kundli.panchangDataNew,
   currentLocation: state.kundli.currentLatLong,
 })
 
 export default connect(mapStateToProps, null)(Tithi)
-
-const styles = StyleSheet.create({})

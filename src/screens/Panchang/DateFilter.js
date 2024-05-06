@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 import * as KundliActions from '../../redux/actions/KundliActions'
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 
-const DateFilter = ({currentLatLong, dispatch,refresh,setRefresh}) => {
+const DateFilter = ({ currentLatLong, dispatch, refresh, setRefresh }) => {
     const [isFocus, setIsFocus] = useState(false)
     const [value, setValue] = useState(null)
     const [filterData, setFilterData] = useState([])
 
-     useEffect(() => {
+    useEffect(() => {
         getNext5Days()
     }, [])
 
@@ -24,11 +24,11 @@ const DateFilter = ({currentLatLong, dispatch,refresh,setRefresh}) => {
             currentDate.setDate(currentDate.getDate() + 1);
             dates.push({ value: currentDate.toISOString().split('T')[0], label: currentDate.toISOString().split('T')[0] }); // Convert to ISO string and extract the date part
         }
-        dates.push({label: 'Custome', value: 'custome'})
+        dates.push({ label: 'Custome', value: 'custome' })
         setFilterData(dates)
     }
 
-    const onSelect = (date)=>{
+    const onSelect = (date) => {
         const payload = {
             date: new Date(date).getDate().toString(),
             month: new Date(date).getMonth(),
@@ -38,28 +38,27 @@ const DateFilter = ({currentLatLong, dispatch,refresh,setRefresh}) => {
             newDate: new Date(date),
             latitude: currentLatLong?.lat,
             longitude: currentLatLong?.long
-          }
-          setRefresh(true);
+        }
+        setRefresh(true);
 
-          dispatch(KundliActions.setPanchangNew(payload))
+        dispatch(KundliActions.setPanchangNew(payload))
     }
 
     const select_start_date = () => {
         if (Platform.OS == 'android') {
-          DateTimePickerAndroid.open({
-            value: new Date(),
-            onChange: (event, date) => {
-              if (event.type == 'set') {
-                onSelect(date)
-              }
-            },
-            mode: 'date',
-            display: 'calendar',
-            is24Hour: true,
-          });
-        } else {
-        }
-      };
+            DateTimePickerAndroid.open({
+                value: new Date(),
+                onChange: (event, date) => {
+                    if (event.type == 'set') {
+                        onSelect(date)
+                    }
+                },
+                mode: 'date',
+                display: 'calendar',
+                is24Hour: true,
+            });
+        } 
+    };
 
     return (
         <View style={styles.container}>
@@ -84,23 +83,23 @@ const DateFilter = ({currentLatLong, dispatch,refresh,setRefresh}) => {
                 onBlur={() => setIsFocus(false)}
                 onChange={item => {
                     setValue(item.value);
-                      if(item.value == 'custome'){
+                    if (item.value == 'custome') {
                         select_start_date()
-                    }else{
+                    } else {
                         onSelect(item.value)
                     }
-                   
+
                 }}
             />
         </View>
     );
 }
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
     currentLatLong: state.kundli.currentLatLong
 })
 
-const mapDispatchToProps = dispatch =>({dispatch})
+const mapDispatchToProps = dispatch => ({ dispatch })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateFilter)
 

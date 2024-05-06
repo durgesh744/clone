@@ -1,10 +1,10 @@
+import axios from 'axios';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
@@ -18,7 +18,6 @@ import Stars from 'react-native-stars';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TextInput} from 'react-native';
 import {api_url, product_review} from '../../config/constants';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import database from '@react-native-firebase/database';
 
@@ -84,10 +83,6 @@ const ProductTracking = ({navigation, route, userData}) => {
       console.log(e);
     }
   }, []);
-
-  const get_track_data = ()=>{
-    
-  }
 
   const add_review = async () => {
     updateState({isLoading: true});

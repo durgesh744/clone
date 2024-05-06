@@ -46,6 +46,7 @@ import ProductTracking from '../screens/Ecommerce/ProductTracking';
 import ProductSuccessBooking from '../screens/Ecommerce/ProductSuccessBooking';
 import ProductHistoryDetails from '../screens/Ecommerce/ProductHistoryDetails';
 import PoojaHistoryDetailes from '../screens/Ecommerce/PoojaHistoryDetailes';
+import Cart from '../screens/Ecommerce/Cart';
 
 const Stack = createNativeStackNavigator();
 
@@ -123,11 +124,13 @@ const StackNavigator = () => {
         name="productHistoryDetails"
         component={ProductHistoryDetails}
       />
+      <Stack.Screen name="cart" component={Cart} />
 
       <Stack.Screen
         name="poojaHistoryDetailes"
         component={PoojaHistoryDetailes}
       />
+
     </Stack.Navigator>
   );
 };

@@ -38,7 +38,6 @@ const MatchDashakoota = props => {
       },
     })
       .then(res => {
-        console.log('ye asktkoot ka data hi', res.data);
         setData(res.data);
       })
       .catch(err => {

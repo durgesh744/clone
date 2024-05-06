@@ -63,17 +63,17 @@ const Cart = ({navigation}) => {
   function continueButtonInfo() {
 
     const on_payment = async()=>{
-      const check_is_register = await AsyncStorage.getItem('isRegister');
-      const isRegister = JSON.parse(check_is_register);
-      if(isRegister?.value){
+      // const check_is_register = await AsyncStorage.getItem('isRegister');
+      // const isRegister = JSON.parse(check_is_register);
+      // if(isRegister?.value){
         go_for_payment()
-      }else{
-        if(isRegister?.type == 'profile'){
-          navigation.navigate('profile')
-        }else{
-          navigation.navigate('login')
-        }
-      }
+      // }else{
+        // if(isRegister?.type == 'profile'){
+          // navigation.navigate('profile')
+        // }else{
+          // navigation.navigate('login')
+        // }
+      // }
     }
     
     const go_for_payment = () => {
@@ -196,13 +196,6 @@ const Cart = ({navigation}) => {
         }}>
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
           <Text style={{...Fonts.black16RobotoMedium}}>Address</Text>
-          {/* <TouchableOpacity>
-            <Ionicons
-              name="pencil-outline"
-              color={Colors.primaryDark}
-              size={14}
-            />
-          </TouchableOpacity> */}
         </View>
 
         <Text

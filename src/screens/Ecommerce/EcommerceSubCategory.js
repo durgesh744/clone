@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   View,
   Text,
@@ -5,18 +6,17 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  FlatList
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import MyStatusBar from '../../component/MyStatusBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {FlatList} from 'react-native';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import LinearGradient from 'react-native-linear-gradient';
 import {Input} from '@rneui/themed';
 import { api_url, category_pooja_list, img_url_3 } from '../../config/constants';
 import Loader from '../../component/Loader';
-import axios from 'axios';
 import NoDataFound from '../../component/NoDataFound';
 
 const data = [
@@ -87,12 +87,8 @@ const EcommerceSubCategory = ({navigation, route}) => {
         updateState({isLoading: false});
         console.log(err);
       });
-  };
-
-  const search_product = (search)=>{
-    
   }
-
+  
   const updateState = data => {
     setState(prevState => {
       const newData = {...prevState, ...data};

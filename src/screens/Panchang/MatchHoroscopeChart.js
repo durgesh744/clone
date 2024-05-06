@@ -286,56 +286,6 @@ const MatchHoroscopeChart = props => {
     );
   }
 
-  function categoryInfo() {
-    const renderItem = ({item, index}) => {
-      return (
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => updateState({selectedItem: item.id})}>
-          <LinearGradient
-            colors={
-              selectedItem == item.id
-                ? [Colors.primaryLight, Colors.primaryDark]
-                : [Colors.grayLight, Colors.whiteDark]
-            }
-            style={{
-              width: SCREEN_WIDTH * 0.45,
-              paddingVertical: Sizes.fixPadding * 0.8,
-              marginRight: Sizes.fixPadding * 2,
-              borderRadius: 1000,
-            }}>
-            <Text
-              style={
-                selectedItem == item.id
-                  ? {...Fonts.white14RobotoRegular, textAlign: 'center'}
-                  : {...Fonts.black14RobotoRegular, textAlign: 'center'}
-              }>
-              {item.title}
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
-      );
-    };
-
-    return (
-      <View
-        style={{
-          paddingVertical: Sizes.fixPadding,
-          borderBottomWidth: 1,
-          borderBottomColor: Colors.grayLight,
-        }}>
-        <FlatList
-          data={detailInfo}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{paddingLeft: Sizes.fixPadding * 2}}
-        />
-      </View>
-    );
-  }
-
   function header() {
     return (
       <View

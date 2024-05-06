@@ -1,33 +1,22 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Image,FlatList, TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
-import { Image } from "react-native";
-import { TouchableOpacity } from "react-native";
 import { Colors, Sizes, Fonts } from "../../assets/style";
-import { FlatList } from "react-native";
 import { SCREEN_WIDTH } from "../../config/Screen";
+import { api_url, base_url, get_mall_cat } from "../../config/constants";
 
 const EcommerceInfo = ({ navigation }) => {
-    const ecommerceData = [
-        {
-            name: "Crystal Bracelets",
-            image: "pooja.jpg",
-            type: "products"
-        },
-        {
-            name: "Book a Pooja",
-            image: "pooja.jpg",
-            type: "book_a_pooja"
-        },
-        {
-            name: "Spell",
-            image: "spell.jpg",
-            type: "spell"
-        },
-        {
-            name: "Product 1",
-            image: "product1.jpg",
-            type: "products"
-        },
-    ];
+    const [ecommerceData, setEcommerceData] = useState()
+
+    const fetch = async () => {
+        const e_commerce = await axios.get(api_url + get_mall_cat);
+        setEcommerceData(e_commerce.data.data)
+    }
+
+    useEffect(() => {
+        fetch()
+    }, [])
 
     const navigate_to = (type, item) => {
         switch (type) {
@@ -68,7 +57,7 @@ const EcommerceInfo = ({ navigation }) => {
                     paddingBottom: Sizes.fixPadding * 2,
                 }}>
                 <Image
-                    source={require("../../assets/images/users/user2.jpg")}
+                    source={{ uri: base_url + 'admin/' + item.image }}
                     style={{
                         width: '90%',
                         height: SCREEN_WIDTH * 0.4,

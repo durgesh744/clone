@@ -4,7 +4,6 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
-  StyleSheet,
   ImageBackground,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
@@ -221,7 +220,6 @@ const PoojaAstroUploads = ({navigation, route}) => {
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            // justifyContent: 'space-between',
             paddingVertical: Sizes.fixPadding,
           }}>
           <View
@@ -294,23 +292,3 @@ const PoojaAstroUploads = ({navigation, route}) => {
 };
 
 export default PoojaAstroUploads;
-
-const styles = StyleSheet.create({
-  itemContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  child: {
-    flex: 0.4,
-    ...Fonts.black14RobotoRegular,
-    fontSize: 13,
-  },
-  colon: {...Fonts.black16RobotoMedium},
-  childValue: {
-    flex: 0.6,
-    ...Fonts.black14RobotoRegular,
-    marginLeft: Sizes.fixPadding,
-    fontSize: 13,
-  },
-});

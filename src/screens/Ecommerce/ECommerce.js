@@ -1,12 +1,12 @@
+import axios from 'axios';
+import { FlatList } from 'react-native';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Colors, Fonts, Sizes } from '../../assets/style';
 import MyStatusBar from '../../component/MyStatusBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { FlatList } from 'react-native';
 import { SCREEN_WIDTH } from '../../config/Screen';
-import axios from 'axios';
-import { api_url, base_url, get_fav, get_fortune_store_banner, get_mall_cat, img_url } from '../../config/constants';
+import { api_url, base_url, get_fortune_store_banner, get_mall_cat, img_url } from '../../config/constants';
 import Loader from '../../component/Loader';
 import LinearGradient from 'react-native-linear-gradient';
 import NoDataFound from '../../component/NoDataFound';
@@ -222,7 +222,6 @@ const ECommerce = ({ navigation }) => {
           onPress={() => navigation.goBack()}
           style={{
             alignSelf: 'flex-start',
-            // flex: 0.2,
           }}>
           <AntDesign
             name="leftcircleo"
@@ -234,7 +233,6 @@ const ECommerce = ({ navigation }) => {
           style={{
             ...Fonts.primaryLight15RobotoMedium,
             textAlign: 'center',
-            // flex: 0.6,
           }}>
           Fortune Store
         </Text>

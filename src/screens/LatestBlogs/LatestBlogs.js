@@ -1,25 +1,24 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { SCREEN_WIDTH } from "../../config/Screen";
-import { Colors, Sizes ,Fonts} from "../../assets/style";
-import { Image } from "react-native";
+import { Colors, Sizes, Fonts } from "../../assets/style";
 
-const LatestBlogs = ({navigation}) => {
+const LatestBlogs = ({ navigation }) => {
 
     const blogData = [
         {
-          id: 1,
-          title: "The Power of Positive Thinking: Healing Through Astrology",
-          blog_icon: "https://example.com/blog1_icon.jpg",
-          description: "<p>This blog discusses the benefits of positive thinking...</p>",
+            id: 1,
+            title: "The Power of Positive Thinking: Healing Through Astrology",
+            blog_icon: "https://example.com/blog1_icon.jpg",
+            description: "<p>This blog discusses the benefits of positive thinking...</p>",
         },
         {
-          id: 2,
-          title: "Understanding Zodiac Signs : Using Your Birth chart to Attract Abundance",
-          blog_icon: "https://example.com/blog2_icon.jpg",
-          description: "<p>Explore the meaning and characteristics of different zodiac signs...</p>",
+            id: 2,
+            title: "Understanding Zodiac Signs : Using Your Birth chart to Attract Abundance",
+            blog_icon: "https://example.com/blog2_icon.jpg",
+            description: "<p>Explore the meaning and characteristics of different zodiac signs...</p>",
         },
-      ];
-      
+    ];
+
     const renderItem = ({ item, index }) => {
         return (
             <TouchableOpacity
@@ -95,8 +94,8 @@ export default LatestBlogs
 
 const styles = StyleSheet.create({
     row: {
-      flex: 0,
-      flexDirection: 'row',
-      alignItems: 'center',
+        flex: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
     },
-  });  
+});  

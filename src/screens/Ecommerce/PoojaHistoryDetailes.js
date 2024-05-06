@@ -14,7 +14,6 @@ import Carousel from 'react-native-reanimated-carousel';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import {useSharedValue} from 'react-native-reanimated';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import LinearGradient from 'react-native-linear-gradient';
 import MyHeader from '../../component/MyHeader';
 import {img_url_2, img_url_3} from '../../config/constants';
 
@@ -53,38 +52,12 @@ const PoojaHistoryDetailes = ({navigation, route}) => {
               {renderPagination()}
               {remediesInfo()}
               {aboutInfo()}
-              {/* {continueButtonInfo()} */}
             </>
           }
-          // contentContainerStyle={{paddingVertical: Sizes.fixPadding}}
         />
       </View>
     </View>
   );
-
-  function continueButtonInfo() {
-    return (
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() =>
-          navigation.navigate('poojaPayement', {poojaData: poojaData})
-        }
-        style={{
-          marginHorizontal: Sizes.fixPadding * 6,
-          marginVertical: Sizes.fixPadding,
-          borderRadius: 1000,
-          overflow: 'hidden',
-        }}>
-        <LinearGradient
-          colors={[Colors.primaryLight, Colors.primaryDark]}
-          style={{paddingVertical: Sizes.fixPadding * 1}}>
-          <Text style={{...Fonts.white16RobotoMedium, textAlign: 'center'}}>
-            Book Now
-          </Text>
-        </LinearGradient>
-      </TouchableOpacity>
-    );
-  }
 
   function aboutInfo() {
     return (
@@ -122,17 +95,6 @@ const PoojaHistoryDetailes = ({navigation, route}) => {
         </Text>
         <Text style={{...Fonts.black16RobotoMedium}}>
           ₹ {poojaData?.price}{' '}
-          {/* <Text
-              style={{
-                ...Fonts.gray16RobotoMedium,
-                textDecorationLine: 'line-through',
-              }}>
-              {' '}
-              7500{' '}
-            </Text>{' '} */}
-          {/* <Text style={{...Fonts.white14RobotoMedium, color: Colors.red}}>
-              20% Off
-            </Text> */}
         </Text>
       </View>
     );

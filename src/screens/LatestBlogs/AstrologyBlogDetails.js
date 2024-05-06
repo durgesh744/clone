@@ -6,17 +6,17 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
-import {Colors, Fonts, Sizes} from '../../assets/style';
+import React, { useState } from 'react';
+import { Colors, Fonts, Sizes } from '../../assets/style';
 import MyStatusBar from '../../component/MyStatusBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {SCREEN_WIDTH} from '../../config/Screen';
+import { SCREEN_WIDTH } from '../../config/Screen';
 import RenderHTML from 'react-native-render-html';
 
-const AstrologyBlogDetails = ({navigation, route}) => {
+const AstrologyBlogDetails = ({ navigation, route }) => {
   const [blogData] = useState(route.params.blogData);
   return (
-    <View style={{flex: 1, backgroundColor: Colors.bodyColor}}>
+    <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
       <MyStatusBar
         backgroundColor={Colors.primaryLight}
         barStyle={'light-content'}
@@ -39,7 +39,7 @@ const AstrologyBlogDetails = ({navigation, route}) => {
         }}>
         <RenderHTML
           contentWidth={SCREEN_WIDTH}
-          source={{html: blogData?.description.replace(/&lt;/g, '<').replace(/&gt;/g, '>')}}
+          source={{ html: blogData?.description.replace(/&lt;/g, '<').replace(/&gt;/g, '>') }}
           enableExperimentalMarginCollapsing={false}
           baseStyle={{
             color: Colors.blackLight,
@@ -54,7 +54,7 @@ const AstrologyBlogDetails = ({navigation, route}) => {
 
   function titleInof() {
     return (
-      <Text style={{...Fonts.primaryLight18RobotoMedium, margin: Sizes.fixPadding}}>
+      <Text style={{ ...Fonts.primaryLight18RobotoMedium, margin: Sizes.fixPadding }}>
         {blogData?.title}
       </Text>
     );
@@ -64,7 +64,7 @@ const AstrologyBlogDetails = ({navigation, route}) => {
     return (
       <Image
         source={require('../../assets/images/users/user3.jpg')}
-        style={{width: '100%', height: SCREEN_WIDTH * 0.5}}
+        style={{ width: '100%', height: SCREEN_WIDTH * 0.5 }}
       />
     );
   }
@@ -94,7 +94,7 @@ const AstrologyBlogDetails = ({navigation, route}) => {
             marginHorizontal: Sizes.fixPadding,
             flex: 1,
           }}>
-        
+
           {blogData?.title}
         </Text>
       </View>

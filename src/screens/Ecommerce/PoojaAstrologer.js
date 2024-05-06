@@ -1,14 +1,16 @@
+import axios from 'axios';
+import moment from 'moment';
 import {
   View,
   Text,
   TouchableOpacity,
   Image,
   ImageBackground,
+  FlatList
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors, Fonts, Sizes} from '../../assets/style';
 import MyStatusBar from '../../component/MyStatusBar';
-import {FlatList} from 'react-native';
 import {SCREEN_WIDTH} from '../../config/Screen';
 import LinearGradient from 'react-native-linear-gradient';
 import {
@@ -18,9 +20,7 @@ import {
   schedule_a_pooja_id,
 } from '../../config/constants';
 import Loader from '../../component/Loader';
-import axios from 'axios';
 import MyHeader from '../../component/MyHeader';
-import moment from 'moment';
 import NoDataFound from '../../component/NoDataFound';
 
 const PoojaAstrologer = ({navigation, route}) => {
@@ -46,7 +46,6 @@ const PoojaAstrologer = ({navigation, route}) => {
       },
     })
       .then(res => {
-        console.log(res.data)
         updateState({isLoading: false});
         if (res.data.data) {
           updateState({astrologerData: res.data.data});
