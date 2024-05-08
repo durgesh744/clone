@@ -64,7 +64,7 @@ const Home = ({ navigation }) => {
         barStyle={'light-content'}
       />
       <HomeSkeleton visible={isLoading} />
-      {header({navigation})}
+      {header({ navigation })}
       <FlatList ListHeaderComponent={
         <>
           {searchInfo()}
@@ -390,7 +390,7 @@ function searchInfo() {
   );
 }
 
-function header({navigation}) {
+function header({ navigation }) {
   return (
     <View
       style={{
@@ -442,6 +442,9 @@ function header({navigation}) {
         </TouchableOpacity>
 
         <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("destinationpooja")
+          }
           activeOpacity={0.8}
           style={{
             paddingVertical: Sizes.fixPadding * 0.5,
