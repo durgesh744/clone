@@ -15,6 +15,7 @@ import { img_url_2, img_url } from '../../config/constants'
 import ClientTestimonial from '../ClientTestimonial/ClientTestimonial'
 import LatestBlogs from '../LatestBlogs/LatestBlogs'
 import EcommerceInfo from '../Ecommerce/EcommerceInfo'
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 const Home = ({ navigation }) => {
   const [state, setState] = useState({
@@ -54,7 +55,7 @@ const Home = ({ navigation }) => {
     courseData,
     learningBannerData
   } = state;
-  
+
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
@@ -63,7 +64,7 @@ const Home = ({ navigation }) => {
         barStyle={'light-content'}
       />
       <HomeSkeleton visible={isLoading} />
-      {header()}
+      {header({navigation})}
       <FlatList ListHeaderComponent={
         <>
           {searchInfo()}
@@ -73,7 +74,7 @@ const Home = ({ navigation }) => {
             : null}
           {freeInsightInfo({ navigation })}
           <EcommerceInfo navigation={navigation} />
-          <LatestBlogs navigation={navigation}  />
+          <LatestBlogs navigation={navigation} />
           <ClientTestimonial navigation={navigation} />
         </>
       }
@@ -389,7 +390,7 @@ function searchInfo() {
   );
 }
 
-function header() {
+function header({navigation}) {
   return (
     <View
       style={{
@@ -433,6 +434,13 @@ function header() {
             style={{ width: 25, height: 25 }}
           />
         </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate('notification', { type: 'wallet' })}
+          style={{ paddingVertical: Sizes.fixPadding * 0.5 }}>
+          <Icon name="bell" size={30} color="black" />
+        </TouchableOpacity>
+
         <TouchableOpacity
           activeOpacity={0.8}
           style={{

@@ -222,7 +222,8 @@ const ECommerce = ({ navigation }) => {
           onPress={() => navigation.goBack()}
           style={{
             alignSelf: 'flex-start',
-          }}>
+          }}
+          >
           <AntDesign
             name="leftcircleo"
             color={Colors.primaryLight}
