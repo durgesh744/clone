@@ -1,23 +1,36 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { SCREEN_WIDTH } from "../../config/Screen";
+import { Node_base_url2 } from "../../config/constants";
 import { Colors, Sizes, Fonts } from "../../assets/style";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 
 const LatestBlogs = ({ navigation }) => {
+    const [data, setData] = useState([])
 
-    const blogData = [
-        {
-            id: 1,
-            title: "The Power of Positive Thinking: Healing Through Astrology",
-            blog_icon: "https://example.com/blog1_icon.jpg",
-            description: "<p>This blog discusses the benefits of positive thinking...</p>",
-        },
-        {
-            id: 2,
-            title: "Understanding Zodiac Signs : Using Your Birth chart to Attract Abundance",
-            blog_icon: "https://example.com/blog2_icon.jpg",
-            description: "<p>Explore the meaning and characteristics of different zodiac signs...</p>",
-        },
-    ];
+    const fetch = async () => {
+        const test = await axios.get(Node_base_url2 + `/blog-list`);
+        setData(test.data.Blog)
+    }
+
+    useEffect(() => {
+        fetch()
+    }, [])
+
+    // const blogData = [
+    //     {
+    //         id: 1,
+    //         title: "The Power of Positive Thinking: Healing Through Astrology",
+    //         blog_icon: "https://example.com/blog1_icon.jpg",
+    //         description: "<p>This blog discusses the benefits of positive thinking...</p>",
+    //     },
+    //     {
+    //         id: 2,
+    //         title: "Understanding Zodiac Signs : Using Your Birth chart to Attract Abundance",
+    //         blog_icon: "https://example.com/blog2_icon.jpg",
+    //         description: "<p>Explore the meaning and characteristics of different zodiac signs...</p>",
+    //     },
+    // ];
 
     const renderItem = ({ item, index }) => {
         return (
@@ -80,7 +93,7 @@ const LatestBlogs = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <FlatList
-                data={blogData}
+                data={data}
                 renderItem={renderItem}
                 horizontal
                 contentContainerStyle={{ paddingRight: Sizes.fixPadding * 1.5 }}

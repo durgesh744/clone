@@ -1,3 +1,5 @@
+import axios from 'axios';
+import Stars from 'react-native-stars';
 import {
   View,
   Text,
@@ -6,22 +8,20 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import MyStatusBar from '../../component/MyStatusBar';
-import {Colors, Fonts, Sizes} from '../../assets/style';
+import { Colors, Fonts, Sizes } from '../../assets/style';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {SCREEN_WIDTH} from '../../config/Screen';
+import { SCREEN_WIDTH } from '../../config/Screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Stars from 'react-native-stars';
 import LinearGradient from 'react-native-linear-gradient';
-import {api_url, base_url, get_pro_review} from '../../config/constants';
+import { api_url, base_url, get_pro_review } from '../../config/constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {MyMethods} from '../../methods/my_methods';
+import { MyMethods } from '../../methods/my_methods';
 import { showToastWithGravityAndOffset } from '../../methods/toastMessage';
-import axios from 'axios';
 
-const ProductDetailes = ({navigation, route}) => {
-  const [ review, setreview] = useState(null);
+const ProductDetailes = ({ navigation, route }) => {
+  const [review, setreview] = useState(null);
   const [state, setState] = useState({
     productData: route?.params?.productData,
     isLoading: false,
@@ -44,12 +44,12 @@ const ProductDetailes = ({navigation, route}) => {
             typeof sub_item?.suggestedBy == 'undefined' ||
             route?.params?.suggestedBy == '',
         );
-        if(newList.length != 0){
+        if (newList.length != 0) {
           await AsyncStorage.setItem('eCommerceCart', JSON.stringify(newList));
-        }else{
+        } else {
           await AsyncStorage.removeItem('eCommerceCart');
         }
-  
+
       }
     } catch (e) {
       console.log(e);
@@ -72,20 +72,20 @@ const ProductDetailes = ({navigation, route}) => {
 
   const updateState = data => {
     setState(prevState => {
-      const newData = {...prevState, ...data};
+      const newData = { ...prevState, ...data };
       return newData;
     });
   };
 
-  const {productData, isLoading} = state;
+  const { productData, isLoading } = state;
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.bodyColor}}>
+    <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
       <MyStatusBar
         backgroundColor={Colors.primaryLight}
         barStyle={'light-content'}
       />
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         {header()}
         <FlatList
           ListHeaderComponent={
@@ -97,7 +97,7 @@ const ProductDetailes = ({navigation, route}) => {
               {bookNowButtonInfo()}
             </>
           }
-          contentContainerStyle={{paddingVertical: Sizes.fixPadding}}
+          contentContainerStyle={{ paddingVertical: Sizes.fixPadding }}
         />
       </View>
     </View>
@@ -119,7 +119,7 @@ const ProductDetailes = ({navigation, route}) => {
             };
             return updatedItem;
           }
-          return {...sub_item};
+          return { ...sub_item };
         });
 
         if (x) {
@@ -131,7 +131,7 @@ const ProductDetailes = ({navigation, route}) => {
           newList.push(cart);
         }
         await AsyncStorage.setItem('eCommerceCart', JSON.stringify(newList));
-        updateState({cartData: newList});
+        updateState({ cartData: newList });
         navigation.navigate('cart');
       } else {
         let arr = [];
@@ -158,8 +158,8 @@ const ProductDetailes = ({navigation, route}) => {
         }}>
         <LinearGradient
           colors={[Colors.primaryLight, Colors.primaryDark]}
-          style={{paddingVertical: Sizes.fixPadding}}>
-          <Text style={{...Fonts.white16RobotoMedium, textAlign: 'center'}}>
+          style={{ paddingVertical: Sizes.fixPadding }}>
+          <Text style={{ ...Fonts.white16RobotoMedium, textAlign: 'center' }}>
             Book Now
           </Text>
         </LinearGradient>
@@ -168,7 +168,7 @@ const ProductDetailes = ({navigation, route}) => {
   }
 
   function reviewInfo() {
-    const renderItem = ({item, index}) => {
+    const renderItem = ({ item, index }) => {
       return (
         <TouchableOpacity
           activeOpacity={1}
@@ -188,9 +188,9 @@ const ProductDetailes = ({navigation, route}) => {
             backgroundColor: Colors.white,
             padding: Sizes.fixPadding * 0.8,
           }}>
-          <View style={{...styles.row}}>
+          <View style={{ ...styles.row }}>
             <Image
-              source={require('../../assets/images/logo_icon.png') }
+              source={require('../../assets/images/logo_icon.png')}
               style={{
                 width: 25,
                 height: 25,
@@ -204,7 +204,7 @@ const ProductDetailes = ({navigation, route}) => {
               }}>
               {item.customer_name}
             </Text>
-            <View style={{marginLeft: Sizes.fixPadding * 1.5}}>
+            <View style={{ marginLeft: Sizes.fixPadding * 1.5 }}>
               <Stars
                 default={4}
                 count={item.rating}
@@ -227,7 +227,7 @@ const ProductDetailes = ({navigation, route}) => {
               />
             </View>
           </View>
-          <Text numberOfLines={5} style={{...Fonts.gray11RobotoRegular}}>
+          <Text numberOfLines={5} style={{ ...Fonts.gray11RobotoRegular }}>
             {item.comment}
           </Text>
         </TouchableOpacity>
@@ -264,7 +264,7 @@ const ProductDetailes = ({navigation, route}) => {
           borderBottomColor: Colors.grayLight,
           borderBottomWidth: 1,
         }}>
-        <Text style={{...Fonts.black18RobotoRegular}}>Description</Text>
+        <Text style={{ ...Fonts.black18RobotoRegular }}>Description</Text>
         <Text
           style={{
             ...Fonts.gray14RobotoMedium,
@@ -285,30 +285,41 @@ const ProductDetailes = ({navigation, route}) => {
           borderBottomColor: Colors.grayLight,
           borderBottomWidth: 1,
         }}>
-        <Text style={{...Fonts.primaryLight18RobotoMedium}}>
+        <Text style={{ ...Fonts.primaryLight18RobotoMedium }}>
           {route?.params?.title}
         </Text>
-        <Text style={{...Fonts.gray14RobotoMedium, fontSize: 13}}>
+        <Text style={{ ...Fonts.gray14RobotoMedium, fontSize: 13 }}>
           {productData?.short_desc}
         </Text>
-        <Text style={{...Fonts.black16RobotoMedium}}>
-          ₹ {productData?.dicount_price}{' '}
-          <Text
-            style={{
-              ...Fonts.gray16RobotoMedium,
-              textDecorationLine: 'line-through',
-            }}>
-            {' '}
-            ₹ {productData?.price}{' '}
-          </Text>{' '}
-          <Text style={{...Fonts.white14RobotoMedium, color: Colors.red_a}}>
-            {MyMethods.getPercentageData({
-              principalAmount: productData?.price,
-              discountAmount: productData?.dicount_price,
-            })}
-            % Off
+
+        <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }} >
+
+          <Text style={{ ...Fonts.black16RobotoMedium }}>
+            ₹ {productData?.dicount_price}
+            <Text
+              style={{
+                ...Fonts.gray16RobotoMedium,
+                textDecorationLine: 'line-through',
+              }}>
+
+              ₹ {productData?.price}
+            </Text>
+            <Text style={{ ...Fonts.white14RobotoMedium, color: Colors.red_a }}>
+              {MyMethods.getPercentageData({
+                principalAmount: productData?.price,
+                discountAmount: productData?.dicount_price,
+              })}
+              % Off
+            </Text>
           </Text>
-        </Text>
+          <LinearGradient
+            colors={[Colors.primaryLight, Colors.primaryDark]}
+            style={{paddingHorizontal:10 }}>
+            <Text style={{ ...Fonts.white16RobotoMedium, textAlign: 'center' }}>
+              Add to Cart
+            </Text>
+          </LinearGradient>
+        </View>
       </View>
     );
   }
@@ -323,7 +334,7 @@ const ProductDetailes = ({navigation, route}) => {
           overflow: 'hidden',
         }}>
         <Image
-          source={{uri: base_url + 'admin/' + productData?.image}}
+          source={{ uri: base_url + 'admin/' + productData?.image }}
           style={{
             width: '100%',
             height: SCREEN_WIDTH * 0.6,
@@ -335,10 +346,10 @@ const ProductDetailes = ({navigation, route}) => {
   }
 
   function header() {
-    const on_cart_press = ()=>{
-      if(MyMethods.check_is_cart_empty()){
+    const on_cart_press = () => {
+      if (MyMethods.check_is_cart_empty()) {
         navigation.navigate('cart')
-      }else{
+      } else {
         showToastWithGravityAndOffset('Your cart is empty.')
       }
     }
@@ -370,12 +381,12 @@ const ProductDetailes = ({navigation, route}) => {
           Product details
         </Text>
         <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={()=>on_cart_press()}
+          activeOpacity={0.8}
+          onPress={() => on_cart_press()}
         >
           <Image
             source={require('../../assets/images/icons/cart.png')}
-            style={{width: 22, height: 22}}
+            style={{ width: 22, height: 22 }}
           />
         </TouchableOpacity>
       </View>
