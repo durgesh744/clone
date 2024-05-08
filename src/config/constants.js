@@ -1,5 +1,8 @@
 // export const base_url = 'http://10.0.2.2:6000/api/v1';
 export const Node_base_url = 'https://fortunetalk-backend.onrender.com/api/v1';
+
+export const Node_base_url2 = 'http://10.0.2.2:4000/api/customers';
+
 export const base_url = 'https://fortunetest.fortunetalk.co.in/';
 export const api_url = 'https://fortunetest.fortunetalk.co.in/api/';
 

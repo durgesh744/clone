@@ -1,46 +1,23 @@
+import axios from 'axios';
 import Stars from 'react-native-stars';
+import { useEffect, useState } from 'react';
+import { SCREEN_WIDTH } from "../../config/Screen";
+import { Node_base_url2 } from '../../config/constants';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { SCREEN_WIDTH } from "../../config/Screen";
 import { Colors, Sizes, Fonts } from "../../assets/style";
 
 function ClientTestimonial({ navigation }) {
+    const [data, setData] = useState([])
 
-    const testimonialsData = [
-        [
-            {
-                id: 1,
-                description: "<p>Many blogs provide commentary on a particular subject or topic, ranging from philosophy, religion, and arts to science, politics, and sports. Others function as more personal online diaries or online brand advertising of a particular individual or company. </p>",
-                cust_pic: require('../../assets/images/daily_horoscope.png'),
-                name: "Durgesh",
-                rating: 1,
-            },
-            {
-                id: 2,
-                description: "<p>Many blogs provide commentary on a particular subject or topic, ranging from philosophy, religion, and arts to science, politics, and sports. Others function as more personal online diaries or online brand advertising of a particular individual or company. </p>",
-                cust_pic: require('../../assets/images/daily_horoscope.png'),
-                name: "Priyanshi",
-                rating: 3,
-            },
-        ],
-        [
-            {
-                id: 1,
-                description: "<p>Many blogs provide commentary on a particular subject or topic, ranging from philosophy, religion, and arts to science, politics, and sports. Others function as more personal online diaries or online brand advertising of a particular individual or company. </p>",
-                cust_pic: require('../../assets/images/daily_horoscope.png'),
-                name: "Jagriti",
-                rating: 2,
-            },
-            {
-                id: 2,
-                description: "<p>Many blogs provide commentary on a particular subject or topic, ranging from philosophy, religion, and arts to science, politics, and sports. Others function as more personal online diaries or online brand advertising of a particular individual or company. </p>",
-                cust_pic: require('../../assets/images/daily_horoscope.png'),
-                name: "Roj",
-                rating: 3,
-            },
-        ],
-    ];
+    const fetch = async () => {
+        const test = await axios.get(Node_base_url2 + `/get-all-testimonial`);
+        setData(test.data.result)
+    }
 
+    useEffect(() => {
+        fetch()
+    }, [])
 
     const renderItem = ({ item, index }) => {
         return (
@@ -202,7 +179,7 @@ function ClientTestimonial({ navigation }) {
                 </Text>
             </View>
             <FlatList
-                data={testimonialsData}
+                data={data}
                 renderItem={renderItem}
                 horizontal
                 contentContainerStyle={{ paddingRight: Sizes.fixPadding * 1.5 }}

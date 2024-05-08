@@ -1,9 +1,9 @@
-import { FlatList, Image, StyleSheet, Text, TextBase, TouchableOpacity, View } from "react-native"
+import { useState } from "react";
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { Colors, Sizes, Fonts } from "../../assets/style"
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MyStatusBar from "../../component/MyStatusBar";
 import { SCREEN_WIDTH } from "../../config/Screen";
-import { useState } from "react";
 
 const Notification = ({ navigation }) => {
 
