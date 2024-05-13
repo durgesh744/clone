@@ -290,7 +290,7 @@ const ShowSvg = ({data}) => {
           </G>
 
           {/* eigth trangle */}
-          <G>
+          <G  >
             <Text fill="black" fontSize="14" x="249.25" y="261.1">
               {data[7]?.sign}
             </Text>
@@ -392,7 +392,7 @@ const ShowSvg = ({data}) => {
           </G>
 
           {/* elevanth trangle */}
-          <G x="70" y="-215">
+          <G  x="70" y="-215">
             <Text fill="black" fontSize="14" x="249.25" y="261.1">
               {data[10]?.planet_small?.includes('Ma ') ? 'Ma' : null}
             </Text>

@@ -49,6 +49,7 @@ import PoojaHistoryDetailes from '../screens/Ecommerce/PoojaHistoryDetailes';
 import Cart from '../screens/Ecommerce/Cart';
 import Notification from '../screens/Notification/Notification';
 import DestinationPooja from '../screens/DestinationPooja/DestinationPooja';
+import DestinationPoojaDetails from '../screens/DestinationPooja/DestinationPoojaDetails/DestinationPoojaDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -144,6 +145,11 @@ const StackNavigator = () => {
       <Stack.Screen
         name="destinationpooja"
         component={DestinationPooja}
+      />
+
+      <Stack.Screen
+        name="destinationpoojadetails"
+        component={DestinationPoojaDetails}
       />
 
     </Stack.Navigator>

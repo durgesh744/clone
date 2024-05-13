@@ -15,7 +15,7 @@ const Splash = ({ navigation }) => {
         if (data) {
           navigation.navigate('Home');
         } else {
-          navigation.navigate('login');
+          navigation.navigate('Home');
         }
       } catch (error) {
         console.error('Error reading user data:', error);

@@ -1,11 +1,10 @@
 import React from 'react'
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Text, TouchableOpacity, View, Image } from 'react-native'
 import MyStatusBar from '../../component/MyStatusBar'
 import { Colors, Fonts, Sizes } from '../../assets/style'
-import AntDesign from 'react-native-vector-icons/AntDesign'
 import NoDataFound from '../../component/NoDataFound'
-import { Image } from 'react-native'
 import { SCREEN_WIDTH } from '../../config/Screen'
+import Header from '../../component/common/Header'
 
 const DestinationPooja = ({ navigation }) => {
 
@@ -15,16 +14,13 @@ const DestinationPooja = ({ navigation }) => {
         backgroundColor={Colors.primaryLight}
         barStyle={'light-content'}
       />
-
-      <View style={{ flex: 1 }}>
-        {header()}
-        <FlatList ListHeaderComponent={<>{DestinationPoojaInfo()}</>} />
-      </View>
+      <Header navigation={navigation} />
+      <FlatList ListHeaderComponent={<>{DestinationPoojaInfo({ navigation })}</>} />
     </View>
   )
 }
 
-function DestinationPoojaInfo() {
+function DestinationPoojaInfo({ navigation }) {
 
   const poojaData = [
     {
@@ -86,7 +82,7 @@ function DestinationPoojaInfo() {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() =>
-          navigation.navigate('astrologyBlogDetails', { poojaData: item })
+          navigation.navigate('destinationpoojadetails', { poojaData: item })
         }
         style={{
           marginHorizontal: Sizes.fixPadding,
@@ -122,7 +118,7 @@ function DestinationPoojaInfo() {
             color: Colors.white,
             paddingBottom: Sizes.fixPadding,
             fontSize: 18,
-            textAlign:"center",
+            textAlign: "center",
             borderBottomRightRadius: Sizes.fixPadding,
             borderBottomLeftRadius: Sizes.fixPadding,
 
@@ -144,42 +140,5 @@ function DestinationPoojaInfo() {
   );
 }
 
-
-function header() {
-  return (
-    <View
-      style={{
-        padding: Sizes.fixPadding * 1.5,
-        ...styles.row,
-        justifyContent: 'space-between',
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.grayLight,
-      }}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <AntDesign
-          name="leftcircleo"
-          color={Colors.primaryLight}
-          size={Sizes.fixPadding * 2.2}
-        />
-      </TouchableOpacity>
-      <Text
-        style={{
-          ...Fonts.primaryLight15RobotoMedium,
-          textAlign: 'center',
-          flex: 1,
-        }}>
-        Destination Pooja
-      </Text>
-    </View>
-  );
-}
-
 export default DestinationPooja
 
-const styles = StyleSheet.create({
-  row: {
-    flex: 0,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
