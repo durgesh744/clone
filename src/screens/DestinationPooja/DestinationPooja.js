@@ -7,21 +7,6 @@ import { SCREEN_WIDTH } from '../../config/Screen'
 import Header from '../../component/common/Header'
 
 const DestinationPooja = ({ navigation }) => {
-
-  return (
-    <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
-      <MyStatusBar
-        backgroundColor={Colors.primaryLight}
-        barStyle={'light-content'}
-      />
-      <Header navigation={navigation} />
-      <FlatList ListHeaderComponent={<>{DestinationPoojaInfo({ navigation })}</>} />
-    </View>
-  )
-}
-
-function DestinationPoojaInfo({ navigation }) {
-
   const poojaData = [
     {
       id: 1,
@@ -77,68 +62,82 @@ function DestinationPoojaInfo({ navigation }) {
     },
   ]
 
-  const renderItem = ({ item, index }) => {
-    return (
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() =>
-          navigation.navigate('destinationpoojadetails', { poojaData: item })
-        }
-        style={{
-          marginHorizontal: Sizes.fixPadding,
-          backgroundColor: Colors.whiteDark,
-          marginBottom: Sizes.fixPadding * 2,
-          borderRadius: Sizes.fixPadding,
-          elevation: 5,
-          shadowOffset: {
-            width: 0,
-            height: 1,
-          },
-          shadowOpacity: 0.2,
-          shadowColor: Colors.blackLight,
-        }}>
-        <Image
-          source={item.image}
-          style={{
-            width: '100%',
-            height: SCREEN_WIDTH * 0.4,
-            borderTopRightRadius: Sizes.fixPadding,
-            borderTopLeftRadius: Sizes.fixPadding,
-          }}
-        />
-        <Text
-          numberOfLines={2}
-          style={{
-            ...Fonts.white18RobotBold,
-            fontSize: 14,
-            color: Colors.black,
-            paddingTop: Sizes.fixPadding,
-            paddingLeft: Sizes.fixPadding,
-            backgroundColor: Colors.primaryLight,
-            color: Colors.white,
-            paddingBottom: Sizes.fixPadding,
-            fontSize: 18,
-            textAlign: "center",
-            borderBottomRightRadius: Sizes.fixPadding,
-            borderBottomLeftRadius: Sizes.fixPadding,
-
-          }}>
-          {item.templeName.replace(/<[^>]*>/g, '')}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
   return (
-    <View style={{ paddingVertical: Sizes.fixPadding }}>
-      <FlatList
-        data={poojaData}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        ListEmptyComponent={<NoDataFound />}
+    <View style={{ flex: 1, backgroundColor: Colors.bodyColor }}>
+      <MyStatusBar
+        backgroundColor={Colors.primaryLight}
+        barStyle={'light-content'}
       />
+      <Header navigation={navigation} />
+      <FlatList ListHeaderComponent={<>{DestinationPoojaInfo()}</>} />
     </View>
-  );
+  )
+
+  function DestinationPoojaInfo() {
+    const renderItem = ({ item, index }) => {
+      return (
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() =>
+            navigation.navigate('destinationpoojadetails', { poojaData: item })
+          }
+          style={{
+            marginHorizontal: Sizes.fixPadding,
+            backgroundColor: Colors.whiteDark,
+            marginBottom: Sizes.fixPadding * 2,
+            borderRadius: Sizes.fixPadding,
+            elevation: 5,
+            shadowOffset: {
+              width: 0,
+              height: 1,
+            },
+            shadowOpacity: 0.2,
+            shadowColor: Colors.blackLight,
+          }}>
+          <Image
+            source={item.image}
+            style={{
+              width: '100%',
+              height: SCREEN_WIDTH * 0.4,
+              borderTopRightRadius: Sizes.fixPadding,
+              borderTopLeftRadius: Sizes.fixPadding,
+            }}
+          />
+          <Text
+            numberOfLines={2}
+            style={{
+              ...Fonts.white18RobotBold,
+              fontSize: 14,
+              color: Colors.black,
+              paddingTop: Sizes.fixPadding,
+              paddingLeft: Sizes.fixPadding,
+              backgroundColor: Colors.primaryLight,
+              color: Colors.white,
+              paddingBottom: Sizes.fixPadding,
+              fontSize: 18,
+              textAlign: "center",
+              borderBottomRightRadius: Sizes.fixPadding,
+              borderBottomLeftRadius: Sizes.fixPadding,
+
+            }}>
+            {item.templeName.replace(/<[^>]*>/g, '')}
+          </Text>
+        </TouchableOpacity>
+      );
+    };
+    return (
+      <View style={{ paddingVertical: Sizes.fixPadding }}>
+        <FlatList
+          data={poojaData}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          ListEmptyComponent={<NoDataFound />}
+        />
+      </View>
+    );
+  }
 }
+
 
 export default DestinationPooja
 

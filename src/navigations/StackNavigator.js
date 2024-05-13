@@ -50,6 +50,7 @@ import Cart from '../screens/Ecommerce/Cart';
 import Notification from '../screens/Notification/Notification';
 import DestinationPooja from '../screens/DestinationPooja/DestinationPooja';
 import DestinationPoojaDetails from '../screens/DestinationPooja/DestinationPoojaDetails/DestinationPoojaDetails';
+import PanditList from '../screens/DestinationPooja/PanditList/PanditList';
 
 const Stack = createNativeStackNavigator();
 
@@ -150,6 +151,11 @@ const StackNavigator = () => {
       <Stack.Screen
         name="destinationpoojadetails"
         component={DestinationPoojaDetails}
+      />
+
+      <Stack.Screen
+        name="panditlist"
+        component={PanditList}
       />
 
     </Stack.Navigator>
